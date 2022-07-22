@@ -1,14 +1,14 @@
-import './style.css'
+import "./style.css";
 
-function copy({ plain }: {plain: string}) {
+function copy({ plain }: { plain: string }) {
   const listener = (event: any) => {
-    console.log(plain)
-    event.clipboardData.setData("text/plain", plain)
-    event.preventDefault()
-  }
-  document.addEventListener("copy", listener)
-  document.execCommand("copy")
-  document.removeEventListener("copy", listener)
+    console.log(plain);
+    event.clipboardData.setData("text/plain", plain);
+    event.preventDefault();
+  };
+  document.addEventListener("copy", listener);
+  document.execCommand("copy");
+  document.removeEventListener("copy", listener);
 }
 
 chrome.tabs.query(
@@ -19,7 +19,7 @@ chrome.tabs.query(
   (tabs) => {
     const { title, url } = tabs[0];
     copy({
-      plain: `[${title}](${url})`
-    })
+      plain: `[${title}](${url})`,
+    });
   }
-)
+);
